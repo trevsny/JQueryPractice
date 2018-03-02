@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Card</title>
+    <link rel="stylesheet" type="text/css" href="Contact_Card.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function()
+    {
+        $("#btn").click(function()
+        {   
+            if ($(".textbox").val() != "")
+            {
+            var first = $("#first").val();
+            var last = $("#last").val();
+            var desc = $("#description").val();
+            var newDiv = "<div class = 'newBox'>"+"<h4>"+first+"&nbsp;"+ last+"</h4>"+"<p>Click here for description</p>";
+            var store = "<div class = 'hiddenBox'><p class = 'center'>"+ desc + "</p></div>";
+            $("#storage").append(newDiv);
+            $("#storage").append(store);
+            $(".textbox").val("");
+            } 
+        });
+        $(document).on("click", ".newBox", function(){
+
+            $(".newBox").hide();
+            $(".hiddenBox").show();   
+        });
+        $(document).on("click",".hiddenBox",function(){
+            $(".hiddenBox").hide(); 
+            $(".newBox").show();
+        });
+    });
+        
+   
+    </script>
+</head>
+<body>
+    <form action="#">
+        <h3>First Name:</h3>
+        <input id = "first" class="textbox" type="text"placeholder = "First Name">
+        <h3>Last Name:</h3>
+        <input id = "last" class="textbox" type="text"placeholder = "Last Name">
+        <h3>Description:</h3>
+        <textarea id = "description" class="textbox"placeholder = "Enter Description"></textarea>
+        <input id="btn" type="button" value="Add User">
+    </form>
+    <div id="storage"></div>
+</body>
+</html>
